@@ -1,17 +1,25 @@
 using System.Collections.Generic;
+using System;
 
 namespace BakeryTracker.Models
 {
     public class Order
-    {
-        public string Details { get; set; }
+    { 
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public DateTime Date { get; set; }
         public int Id { get; }
         private static List<Order> _instances = new List<Order> { };
-        private Order(string details )
-        {
-            Details = details;
-            Id = _instances.Count; 
+        public Order(string title, string description, decimal price, DateTime date)
+    {
+        Title = title;
+        Description = description;
+        Price = price;
+        Date = date; 
+        Id = _instances.Count;
+        _instances.Add(this);
+    } 
 
-        }
     }
 }
