@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using BakeryTracker.Models; 
+using System.Collections.Generic;
 
 namespace BakeryTracker.Controllers
 {
@@ -8,7 +10,7 @@ namespace BakeryTracker.Controllers
         [HttpGet("/")]
         public ActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
     }
