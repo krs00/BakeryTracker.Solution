@@ -18,7 +18,7 @@ namespace BakeryTracker.Tests
         public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
         {
             Vendor newVendor = new Vendor("vendor1", "Test vendor");
-            Assert.AreEqual(typeof(Vendor), newVendor.GetType()); 
+            Assert.AreEqual(typeof(Vendor), newVendor.GetType());
         }
 
         [TestMethod]
@@ -32,5 +32,18 @@ namespace BakeryTracker.Tests
             CollectionAssert.Contains(vendors, newVendor);
             CollectionAssert.Contains(vendors, newVendor2);
         }
+
+        [TestMethod]
+        public void ClearAll_ClearsAllVendorObjects_VendorList()
+        {
+            Vendor newVendor = new Vendor("vendor1", "Test vendor");
+            Vendor.ClearAll();
+            List<Vendor> vendors = Vendor.GetAll();
+            Assert.AreEqual(0, vendors.Count);
+        }
+
+
+
+
     }
 }
