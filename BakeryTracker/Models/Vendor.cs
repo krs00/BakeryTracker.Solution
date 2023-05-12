@@ -34,5 +34,12 @@ namespace BakeryTracker.Models
             Id = _instances.Count;
         }
 
+
+        //  Method will return list of all Vendor objects
+        public static List<Vendor> GetAll()
+        {
+            return _instances;
+        }
+
     }
 }
