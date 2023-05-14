@@ -7,11 +7,19 @@ namespace BakeryTracker.Controllers
     public class VendorController : Controller
     {
 
-        // [HttpGet("/")]
-        // public ActionResult Index()
-        // {
-        //     return View(); 
-        // }
+        [HttpGet("/vendor")]
+        public ActionResult Index()
+        {
+            List<Vendor> allVendors = Vendor.GetAll();
+            return View(allVendors);
+        }
+
+
+        [HttpGet("/vendor/new")] 
+        public ActionResult New()
+        {
+            return View();
+        }
 
     }
 }
