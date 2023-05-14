@@ -11,7 +11,7 @@
 
 ## Description
 
-MVC application
+This is a MVC application that allows the user to make a unique vendor profile that has the ability to create and store a list of orders related to the vendor.
 
 ## Setup/Installation Requirements
 
