@@ -11,7 +11,7 @@
 
 ## Description
 
-This is a MVC application that allows the user to make a unique vendor profile that has the ability to create and store a list of orders related to the vendor.
+This is a simple CRUD application that allows the user to make a unique vendor profile that can create and store a list of orders related to the vendor.
 
 ## Setup/Installation Requirements
 
