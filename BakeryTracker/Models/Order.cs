@@ -8,10 +8,10 @@ namespace BakeryTracker.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public int Id { get; }
         private static List<Order> _instances = new List<Order> { };
-        public Order(string title, string description, decimal price, DateTime date)
+        public Order(string title, string description, decimal price, DateOnly date)
     {
         Title = title;
         Description = description;
