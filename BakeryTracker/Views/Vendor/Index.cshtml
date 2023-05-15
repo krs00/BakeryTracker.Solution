@@ -19,7 +19,7 @@ else
     <ul>
         @foreach (Vendor vendor in Model) 
         {
-            <li>@vendor.Name</li> 
+            <li><a href='/vendor/@vendor.Id'>@vendor.Name</a></li> 
         }
     </ul>
 }
