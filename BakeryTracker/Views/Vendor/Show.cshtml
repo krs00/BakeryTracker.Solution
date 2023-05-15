@@ -2,7 +2,12 @@
 @* It is a lot of code so I can't comment everything it would be to slow!! *@
 @{
   Layout = "_Layout"; 
-  Vendor vendor = Model["vendor"];
+
+  @* Retrives all data associated with the "vendor" key
+  Stores in "vendor" variable
+  It is so I can access the actual model data
+  because before I think I was trying to get it from the dictionary *@
+  Vendor vendor = Model["vendor"]; 
 }
 
 @using BakeryTracker.Models;
@@ -11,6 +16,6 @@
 <h2>Vendor Information</h2> 
 <br>
 <h4>Vendor name: @vendor.Name</h4>
-<p>@vendor.Description</p>
+<p>@vendor.Description</p> 
 
 <h4><a href="/">Back to home page</a></h4>

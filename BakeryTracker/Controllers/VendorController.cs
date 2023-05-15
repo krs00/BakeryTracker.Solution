@@ -31,6 +31,7 @@ namespace BakeryTracker.Controllers
         [HttpGet("/vendor/{id}")]
         public ActionResult Show(int id)
         {
+            // Using a dictionary to pass vendor list and order list
             Dictionary<string, object> model = new Dictionary<string, object>();
             Vendor selectedVendor = Vendor.Find(id);
             List<Order> vendorOrders = selectedVendor.Orders; 
