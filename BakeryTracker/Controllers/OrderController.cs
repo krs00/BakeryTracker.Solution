@@ -1,17 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using BakeryTracker.Models;
+using System;
 using System.Collections.Generic;
 
 namespace BakeryTracker.Controllers
 {
     public class OrderController : Controller
     {
-
-        // [HttpGet("/")]
-        // public ActionResult Index()
-        // {
-        //     return View(); 
-        // }
+        [HttpGet("/vendors/{vendorId}/orders/new")]
+        public ActionResult New(int vendorId)
+        {
+            Vendor vendor = Vendor.Find(vendorId);
+            return View(vendor); 
+        }
 
     }
 }
