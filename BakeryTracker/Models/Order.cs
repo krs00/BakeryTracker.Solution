@@ -19,7 +19,12 @@ namespace BakeryTracker.Models
         Date = date; 
         Id = _instances.Count;
         _instances.Add(this);
-    } 
+    }
+
+      public static void ClearAll()
+    {
+      _instances.Clear();
+    }
 
     }
 }
