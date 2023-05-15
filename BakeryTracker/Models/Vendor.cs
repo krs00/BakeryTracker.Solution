@@ -32,6 +32,7 @@ namespace BakeryTracker.Models
             /*  This will set the value of the Id property for each "Vendor" created 
                 to a unique value (The current count of _instances list) */
             Id = _instances.Count;
+            Orders = new List<Order>{}; 
         }
 
 
