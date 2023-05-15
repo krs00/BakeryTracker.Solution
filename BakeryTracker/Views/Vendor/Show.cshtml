@@ -10,16 +10,25 @@
 
 <h1>🍞 😊 Pierre's Bakery 😊 🍞 </h1>
 <h2>Vendor Orders</h2> 
+<h3>🍰󠀠󠀠󠀠 🥧󠀠 🍪 🎂 🥐 🍰󠀠󠀠󠀠 🥧󠀠 🍪 🎂 🥐</h3>
 <br>
-<h4> Here are all the orders for the vendor <span style="color:red">@Model["vendor"].Name</span></h4> 
 
+
+@if (@Model["orders"].Count == 0)
+{
+    <h3><span style="color:red">@Model["vendor"].Name</span> does have any orders right now!</h3>
+    <br>
+}
+else
+{
  <ol>
     @foreach (Order order in @Model["orders"])
     {
-      <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></li>
+      <h5><li> <br><br>@order.Title <br> @order.Description <br> @order.Price <br> @order.Date <br><br></li> </h5>
     }
-  </ol> 
-</div>
+  </ol>
+}
+
 
 
 <br>

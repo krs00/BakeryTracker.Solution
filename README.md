@@ -21,7 +21,7 @@ This is a simple CRUD application that allows the user to make a unique vendor p
 
 ## Known Bugs
 
-* (Actually not a CRUD app because you cannot delete items :/)
+* (Actually not a CRUD app because you cannot delete items :/ )
 
 ## License
 
