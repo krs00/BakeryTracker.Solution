@@ -12,7 +12,7 @@ namespace BakeryTracker.Models
         /*  This list will hold all "Order" objects that are created
             and belong to the instance
             of the Vendor class */
-        public List<Order> Order { get; set; }
+        public List<Order> Orders { get; set; }
         //  Name for each vendor created
         public string Name { get; set; }
         //  Description of each vendor created
