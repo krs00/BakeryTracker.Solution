@@ -1,46 +1,32 @@
 @* I didn't make it that far with commenting my code :( *@
 @* It is a lot of code so I can't comment everything it would be to slow!! *@
-@{
-  Layout = "_Layout"; 
 
-  @* Retrives all data associated with the "vendor" key
-  Stores in "vendor" variable
-  It's so I can access the actual model data
-  because before I think I was trying to get it from the dictionary
-  Weirdly it works for orders but not the vendor idk why I have to do it this way *@
-  Vendor vendor = Model["vendor"];
+@{
+  Layout = "_Layout";
+
 }
 
 @using BakeryTracker.Models;
 
 <h1>🍞 😊 Pierre's Bakery 😊 🍞 </h1>
-<h2>Vendor Information</h2> 
+<h2>Vendor Orders</h2> 
 <br>
-<h4>@vendor.Name</h4>
-<br>
-<p>@vendor.Description</p>
+<h4> Here are all the orders for the vendor <span style="color:red">@Model["vendor"].Name</span></h4> 
 
-<br>
-<br>
-<br>
-
-  <ol>
+ <ol>
     @foreach (Order order in @Model["orders"])
     {
       <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></li>
     }
-  </ol>
+  </ol> 
 </div>
 
 
-
-<br>
-<br>
 <br>
 <br>
 @* probably won't add CSS to this one, so sorry for the line breaks
-just trying to make it look semi-nice *@ 
-<h4><a href="/vendor/{vendorId}/orders/new">Add order</a></h4>
+just trying to make it look semi-nice *@
+<h4><a href='/vendors/@Model["vendor"].Id/orders/new'>Add order</a></h4>
 <br>
-<h4><a href="/vendor">Back to vendor list</a></h4>
+<h4><a href="/vendors">Back to vendor list</a></h4>
 <h4><a href="/">Back to home page</a></h4>
