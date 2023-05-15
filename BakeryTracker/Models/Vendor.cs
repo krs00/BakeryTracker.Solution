@@ -19,15 +19,15 @@ namespace BakeryTracker.Models
         public string Description { get; set; }
         /*  This is a "read-only" property for each "Vendor" instance
             can have a unique ID */
-        public int Id { get; } 
+        public int Id { get; }
         /*  This is the constructor that builds each instance of a "Vendor" object
-            (blueprint for Vendor class) */ 
+            (blueprint for Vendor class) */
         public Vendor(string name, string description)
         {
             Name = name;
-            Description = description; 
+            Description = description;
             /*  Adds each created instance of "Vendor" object to list named
-                "_instances" ( Which is defined above ) */ 
+                "_instances" ( Which is defined above ) */
             _instances.Add(this);
             /*  This will set the value of the Id property for each "Vendor" created 
                 to a unique value (The current count of _instances list) */
@@ -48,8 +48,13 @@ namespace BakeryTracker.Models
 
         public static Vendor Find(int searchId)
         {
-            return _instances[searchId-1]; 
+            return _instances[searchId - 1];
         }
 
+        public void AddOrder(Order order)
+        {
+            Orders.Add(order);
+        }
     }
+
 }
