@@ -8,7 +8,7 @@ namespace BakeryTracker.Controllers
     public class VendorController : Controller
     {
 
-        [HttpGet("/vendor")]
+        [HttpGet("/vendors")]
         public ActionResult Index()
         {
             List<Vendor> vendors = Vendor.GetAll();
@@ -16,43 +16,45 @@ namespace BakeryTracker.Controllers
         }
 
 
-        [HttpGet("/vendor/new")]
+        [HttpGet("/vendors/new")]
         public ActionResult New()
         {
             return View();
         }
 
-        [HttpPost("/vendor")]
+        [HttpPost("/vendors")]
         public ActionResult Create(string vendorName, string vendorDescription)
         {
             Vendor newVendor = new Vendor(vendorName, vendorDescription);
             return RedirectToAction("Index");
         }
 
-        [HttpGet("/vendor/{id}")]
+        [HttpGet("/vendors/{id}")]
         public ActionResult Show(int id)
         {
-            // Using a dictionary to pass vendor list and order list
             Dictionary<string, object> model = new Dictionary<string, object>();
-            Vendor selectedVendor = Vendor.Find(id);
-            List<Order> vendorOrders = selectedVendor.Orders;
-            model.Add("vendor", selectedVendor);
-            model.Add("orders", vendorOrders);
+            Vendor currentVendor = Vendor.Find(id);
+            List<Order> vendorItems = currentVendor.Orders;
+            model.Add("vendor", currentVendor);
+            model.Add("orders", vendorItems);
             return View(model);
         }
 
-        [HttpPost("/vendor/{vendorId}/orders")]
-        public ActionResult Create(int vendorId, string title, string description, decimal price, DateTime date)
+        [HttpPost("/vendors/{vendorId}/orders")]
+        public ActionResult Create(int vendorId, string orderTitle, string orderDescription, decimal orderPrice, DateTime orderDate)
         {
             Dictionary<string, object> model = new Dictionary<string, object>();
-            Vendor currentVendor = Vendor.Find(vendorId);
-            Order newOrder = new Order(title, description, price, date);
-            currentVendor.AddOrder(newOrder);
-            List<Order> vendorOrders = currentVendor.Orders;
-            model.Add("orders", vendorOrders);
-            model.Add("vendor", currentVendor);
+            Vendor locatedVendor = Vendor.Find(vendorId);
+            DateOnly orderDateOnly = DateOnly.FromDateTime(orderDate);
+            Order newOrder = new Order(orderTitle, orderDescription, orderPrice, orderDateOnly);
+            locatedVendor.AddOrder(newOrder);
+            List<Order> categoryOrders = locatedVendor.Orders;
+            model.Add("vendor", locatedVendor);
+            model.Add("orders", categoryOrders);
             return View("Show", model);
         }
+
+
 
 
     }
