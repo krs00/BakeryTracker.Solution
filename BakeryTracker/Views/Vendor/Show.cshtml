@@ -6,10 +6,9 @@
   @* Retrives all data associated with the "vendor" key
   Stores in "vendor" variable
   It's so I can access the actual model data
-  because before I think I was trying to get it from the dictionary *@
+  because before I think I was trying to get it from the dictionary
+  Weirdly it works for orders but not the vendor idk why I have to do it this way *@
   Vendor vendor = Model["vendor"];
-
-  Order order = Model["orders"];
 }
 
 @using BakeryTracker.Models;
@@ -25,6 +24,14 @@
 <br>
 <br>
 
+  <ol>
+    @foreach (Order order in @Model["orders"])
+    {
+      <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Description</a></li>
+    }
+  </ol>
+</div>
+
 
 
 <br>
@@ -33,7 +40,7 @@
 <br>
 @* probably won't add CSS to this one, so sorry for the line breaks
 just trying to make it look semi-nice *@ 
-<h4><a href="/">Add order</a></h4>
+<h4><a href="/vendor/{vendorId}/orders/new">Add order</a></h4>
 <br>
 <h4><a href="/vendor">Back to vendor list</a></h4>
 <h4><a href="/">Back to home page</a></h4>
