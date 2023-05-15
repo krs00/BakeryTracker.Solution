@@ -48,14 +48,16 @@ namespace BakeryTracker.Controllers
             DateOnly orderDateOnly = DateOnly.FromDateTime(orderDate);
             Order newOrder = new Order(orderTitle, orderDescription, orderPrice, orderDateOnly);
             locatedVendor.AddOrder(newOrder);
-            List<Order> categoryOrders = locatedVendor.Orders;
+            List<Order> groupOrders = locatedVendor.Orders;
             model.Add("vendor", locatedVendor);
-            model.Add("orders", categoryOrders);
+            model.Add("orders", groupOrders); 
             return View("Show", model);
+        } 
+
+        [HttpGet("/vendors/{vendorId}/orders")]
+        public ActionResult Show(Dictionary<string, object> model)
+        {
+            return View(model);
         }
-
-
-
-
     }
 }
