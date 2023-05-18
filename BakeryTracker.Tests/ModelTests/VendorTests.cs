@@ -6,13 +6,8 @@ using System;
 namespace BakeryTracker.Tests
 {
     [TestClass]
-    public class VendorTests // : IDisposable     (for teardown)
+    public class VendorTests
     {
-
-        // public void Dispose()
-        // { 
-        //     Vendor.ClearAll();
-        // }
 
         [TestMethod]
         public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
@@ -40,6 +35,26 @@ namespace BakeryTracker.Tests
             Vendor.ClearAll();
             List<Vendor> vendors = Vendor.GetAll();
             Assert.AreEqual(0, vendors.Count);
+        }
+
+        [TestMethod]
+        public void Find_ReturnsCorrectVendor_Vendor()
+        {
+            Vendor.ClearAll();
+            Vendor newVendor1 = new Vendor("Vendor 1", "Description 1");
+            Vendor newVendor2 = new Vendor("Vendor 2", "Description 2");
+            Vendor foundVendor = Vendor.Find(2);
+            Assert.AreEqual(newVendor2, foundVendor);
+        }
+
+        [TestMethod]
+        public void AddOrder_AddsOrderToVendor_OrdersList()
+        {
+            Vendor.ClearAll();
+            Vendor vendor = new Vendor("Vendor 1", "Description 1");
+            Order newOrder = new Order("Title", "Test", 99, DateOnly.MinValue);
+            vendor.AddOrder(newOrder);
+            CollectionAssert.Contains(vendor.Orders, newOrder);
         }
 
 
